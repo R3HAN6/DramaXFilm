@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DramaXFilm - Platform Drama Streaming Premium</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-950 text-white font-jakarta overflow-x-hidden">
+
+  <div id="loadingOverlay" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 hidden">
+    <div class="flex flex-col items-center justify-center h-full">
+      <div class="relative">
+        <div class="w-16 h-16 border-4 border-slate-700 border-t-blue-500 rounded-full animate-spin"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
+        </div>
+      </div>
+      <p class="mt-4 text-gray-400 animate-pulse">Memuat...</p>
+    </div>
+  </div>
+
+  <div id="developerModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden">
+    <div class="flex items-center justify-center h-full p-4">
+      <div class="glass rounded-xl max-w-md w-full p-6 transform transition-all animate-bounce-in">
+        <div class="flex justify-between items-start mb-4">
+          <h3 class="text-xl font-bold">Tentang Developer</h3>
+          <button id="closeDeveloperModal" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fas fa-times text-xl"></i>
+          </button>
+        </div>
+        
+        <div class="flex flex-col items-center mb-6">
+          <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border-4 border-blue-500/30">
+            <img src="https://e.top4top.io/p_3565wx94l2.jpg" alt="Rehan" class="w-full h-full object-cover">
+          </div>
+          <h4 class="text-lg font-semibold mb-1">Rehan</h4>
+          <p class="text-gray-400 text-sm text-center">Developer | Cyber Security</p>
+        </div>
+        
+        <div class="mb-6">
+          <p class="text-gray-300 text-sm leading-relaxed">
+            Saya seorang Web Developer yang berfokus pada pembuatan website modern, profesional, dan elegan. Saya suka menonton One Piece dan memiliki oshi yaitu Marsha Freya, Christy, dan Zee. Website ini saya buat karena gabut, namun tetap saya buat dengan kualitas terbaik dan penuh dedikasi.
+          </p>
+        </div>        
+        <div class="flex gap-3 justify-center mb-6">
+          <a href="#" class="bg-green-700 px-4 p-2 rounded-full">
+            <i class="fab fa-whatsapp text-lg"></i>
+          </a>
+        </div>
+        
+        <div class="text-center">
+          <p class="text-xs text-gray-500">Version 1.0.0</p>
+          <p class="text-xs text-gray-500">© 2025 DramaXFilm. Buat oleh Rehan.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Overlay - FIXED -->
+  <div id="mobileMenuOverlay" class="mobile-menu-overlay fixed inset-0 bg-black/70 z-40"></div>
+
+  <!-- Mobile Menu - FIXED -->
+  <div id="mobileMenu" class="bg-black/70 mobile-menu fixed top-0 left-0 h-full w-80 max-w-[80%] bg-gradient-to-b from-slate-800 to-slate-900 z-50 shadow-2xl">
+    <div class="p-6 border-b border-slate-700 flex items-center justify-between">
+      <h1 class="text-2xl font-bold gradient-text">DramaXFilm</h1>
+      <button id="closeMobileMenu" class="text-white hover:text-blue-500 transition-colors">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+    </div>
+    
+    <nav class="p-4 mobile-menu-scroll overflow-y-auto h-[calc(100%-88px)] bg-black/70">
+      <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg bg-slate-800 text-white mb-2 border-l-4 border-blue-500">
+        <i class="fas fa-home text-blue-500"></i>
+        <span>Beranda</span>
+      </a>
+      </button>
+      </div>
+    </nav>
+  </div>
+
+  <div class="min-h-screen flex flex-col">
+    <nav class="navbar-elegant fixed top-0 left-0 right-0 z-40">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16 lg:h-20">
+          <div class="flex items-center">
+            <button id="menuToggle" class="mobile-menu-btn nav-icon-btn mr-4">
+              <i class="fas fa-bars text-white"></i>
+            </button>
+            <h1 class="navbar-brand text-2xl lg:text-3xl font-bold">DramaXFilm</h1>
+          </div>
+          
+          <div class="desktop-nav hidden lg:flex items-center space-x-8">
+            <a href="#" class="text-gray-300 hover:text-white transition-colors duration-200 font-medium">
+              <i class="fas fa-home mr-2"></i>Beranda
+            </a>
+            <a href="#" class="text-gray-300 hover:text-white transition-colors duration-200 font-medium">
+              <i class="fas fa-tv mr-2"></i>Serial
+            </a>
+            <a href="#" class="text-gray-300 hover:text-white transition-colors duration-200 font-medium">
+              <i class="fas fa-film mr-2"></i>Film
+            </a>
+            <a href="#" class="text-gray-300 hover:text-white transition-colors duration-200 font-medium">
+              <i class="fas fa-bookmark mr-2"></i>Daftar Saya
+            </a>
+          </div>
+          
+          <div class="flex items-center space-x-4">
+            <div class="hidden md:block">
+              <div class="relative">
+                <input 
+                  type="text" 
+                  id="searchInput"
+                  placeholder="Cari drama..." 
+                  class="nav-search w-64 pl-10 pr-4 py-2 rounded-full text-sm text-white placeholder-gray-400 outline-none"
+                >
+                <i class="fas fa-search absolute left-3 mt-[27px] transform -translate-y-1/2 text-gray-400"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="md:hidden pb-4">
+          <div class="relative">
+            <input 
+              type="text" 
+              id="mobileSearchInput"
+              placeholder="Cari drama..." 
+              class="nav-search w-full pl-10 pr-4 py-2 rounded-full text-sm text-white placeholder-gray-400 outline-none"
+            >
+            <i class="fas fa-search absolute left-3 mt-[27px] transform -translate-y-1/2 text-gray-400"></i>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="flex-1 overflow-y-auto pt-16 lg:pt-20">
+      <div id="homeView" class="p-4 md:p-6">
+        <section class="mt-[60px]">
+          <div class="relative overflow-hidden rounded-xl h-64 md:h-80 lg:h-96 shadow-2xl">
+            <div id="sliderTrack" class="flex transition-transform duration-500 ease-in-out">
+            </div>
+            <button id="sliderPrev" class="absolute top-1/2 left-4 md:left-6 transform -translate-y-1/2 glass text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-slate-700/80 transition-all z-10">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button id="sliderNext" class="absolute top-1/2 right-4 md:right-6 transform -translate-y-1/2 glass text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-slate-700/80 transition-all z-10">
+              <i class="fas fa-chevron-right"></i>
+            </button>            
+            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex z-10">
+              <button id="sliderInfoBtn" class="glass hover:bg-slate-700/80 border border-slate-600/50 px-8 w-[160px] py-3 rounded-lg font-medium transition-all flex items-center gap-2 transform hover:scale-105 shadow-lg pulse-button">
+                <i class="fas fa-info-circle ml-4"></i>
+                <span class="text-sm">Info 👈</span>
+              </button>
+            </div>
+          </div>
+          <div id="sliderDots" class="flex justify-center gap-2 mt-6">
+          </div>
+        </section>
+
+        <section class="mb-10">
+          <h2 class="text-2xl md:text-3xl font-bold mb-6 gradient-text">Kategori Populer</h2>
+          <div id="categoriesContainer" class="flex flex-wrap gap-3 mb-6">
+          </div>
+        </section>
+
+        <section class="mb-10">
+          <div class="mb-6 flex items-center justify-between">
+            <h2 class="text-2xl md:text-3xl font-bold">Anda Mungkin Suka</h2>
+            <button class="text-blue-500 hover:text-blue-600 transition-colors flex items-center gap-2">
+            </button>
+          </div>
+          <div id="latestDramas" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <div class="skeleton h-48 md:h-64 rounded-xl"></div>
+            <div class="skeleton h-48 md:h-64 rounded-xl"></div>
+            <div class="skeleton h-48 md:h-64 rounded-xl"></div>
+            <div class="skeleton h-48 md:h-64 rounded-xl"></div>
+            <div class="skeleton h-48 md:h-64 rounded-xl"></div>
+          </div>
+        </section>
+
+        <section>
+          <div class="mb-6 flex items-center justify-between">
+            <h2 class="text-2xl md:text-3xl font-bold">Rekomendasi Populer</h2>
+            <button class="text-blue-500 hover:text-blue-600 transition-colors flex items-center gap-2">
+            </button>
+          </div>
+          <div id="popularDramas" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            <div class="skeleton h-48 md:h-64 rounded-xl"></div>
+            <div class="skeleton h-48 md:h-64 rounded-xl"></div>
+            <div class="skeleton h-48 md:h-64 rounded-xl"></div>
+            <div class="skeleton h-48 md:h-64 rounded-xl"></div>
+            <div class="skeleton h-48 md:h-64 rounded-xl"></div>
+          </div>
+        </section>
+      </div>
+
+      <div id="searchView" class="p-4 md:p-6 hidden">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6">Hasil Pencarian....</h2>
+        <div id="searchResults" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"></div>
+      </div>
+
+      <div id="playerView" class="hidden">
+        <div class="relative mt-[60px]">
+          <button id="backBtn" class="absolute top-4 left-4 z-20 glass p-3 rounded-full hover:bg-slate-700/80 transition-all">
+            <i class="fas fa-arrow-left text-white"></i>
+          </button>
+          
+          <div class="bg-black/70 rounded-xl overflow-hidden shadow-2xl">
+            <div class="relative w-full" style="padding-top: 56.25%;">
+              <div id="videoContainer" class="absolute top-0 left-0 w-full h-full">
+                <div id="videoLoadingState" class="video-loading w-full h-full hidden">
+                  <div class="flex flex-col items-center justify-center">
+                    <div class="w-16 h-16 border-4 border-slate-700 border-t-blue-500 rounded-full animate-spin mb-4"></div>
+                    <p class="text-gray-400">Memuat video...</p>
+                  </div>
+                </div>
+                
+                <div id="videoErrorState" class="video-error w-full h-full hidden">
+                  <div class="flex flex-col items-center justify-center p-8 text-center">
+                    <i class="fas fa-exclamation-triangle text-4xl mb-4 text-yellow-500"></i>
+                    <h3 class="text-xl font-semibold mb-2">Video Tidak Tersedia</h3>
+                    <p class="text-gray-400 mb-4">Maaf, video tidak dapat diputar saat ini.</p>
+                    <div class="flex gap-3">
+                      <button id="retryVideoBtn" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-redo mr-2"></i>Coba Lagi
+                      </button>
+                      <button id="reportVideoBtn" class="bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-flag mr-2"></i>Laporkan
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                
+                <video id="mainPlayer" class="absolute top-0 left-0 w-full h-full" style="display: none;">
+                  Your browser does not support the video tag.
+                </video>
+                
+                <div id="videoControlsOverlay" class="absolute bottom-0 left-0 right-0 video-controls p-4" style="display: none;">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                      <button id="playPauseBtn" class="text-white hover:text-blue-500 transition-colors">
+                        <i class="fas fa-play text-xl"></i>
+                      </button>
+                      <div class="flex items-center gap-2">
+                        <span id="currentTime" class="text-sm">00:00</span>
+                        <div class="w-32 md:w-64 h-1 bg-gray-600 rounded-full overflow-hidden cursor-pointer" id="progressContainer">
+                          <div id="progressBar" class="h-full bg-blue-500" style="width: 0%"></div>
+                        </div>
+                        <span id="duration" class="text-sm">00:00</span>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                      <button id="volumeBtn" class="text-white hover:text-blue-500 transition-colors">
+                        <i class="fas fa-volume-up text-xl"></i>
+                      </button>
+                      <button id="fullscreenBtn" class="text-white hover:text-blue-500 transition-colors">
+                        <i class="fas fa-expand text-xl"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-4 md:p-6">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+            <div class="lg:col-span-2">
+              <h1 id="dramaTitle" class="text-2xl md:text-3xl font-bold mb-4"></h1>
+              <div class="flex flex-wrap gap-3 mb-6">
+                <span id="protagonist" class="bg-blue-500/20 border border-blue-500/30 px-4 py-2 rounded-full text-sm text-blue-400 hidden"></span>
+                <span id="year" class="bg-slate-800 border border-slate-700 px-4 py-2 rounded-full text-sm hidden"></span>
+                <div class="relative" id="qualityContainer">
+                  <button id="qualityBtn" class="bg-slate-800 border border-slate-700 px-4 py-2 rounded-full text-sm hover:bg-slate-700 transition-all flex items-center gap-2 quality-badge">
+                    <i class="fas fa-hd text-xs"></i>
+                    <span id="currentQualityText">HD</span>
+                    <i class="fas fa-chevron-down text-xs"></i>
+                  </button>
+                  <div id="qualityDropdown" class="absolute bottom-full left-0 mb-2 glass rounded-lg shadow-xl hidden z-20 min-w-[120px]">
+                    <div class="py-1" id="qualityOptions">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p id="dramaDescription" class="text-gray-300 mb-6 leading-relaxed"></p>
+              <div id="dramaTags" class="flex flex-wrap gap-2 mb-6"></div>
+              <div class="flex flex-wrap gap-4">
+                <button id="shareBtn" class="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 px-6 py-3 rounded-lg font-medium transition-all flex items-center gap-2 transform hover:scale-105 pulse-button">
+                  <i class="fas fa-share"></i>
+                  Bagikan
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <div class="glass rounded-xl p-4">
+                <div class="flex items-center justify-between mb-4">
+                  <h2 class="text-lg font-bold">Episode</h2>
+                  <span id="episodeCount" class="text-xs text-gray-400"></span>
+                </div>
+                <div id="episodeGrid" class="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 gap-2 max-h-48 overflow-y-auto episode-grid-scroll pr-1"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="glass border-t border-slate-800/50 px-4 md:px-6 py-10">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Platform</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-blue-500 transition-colors text-sm">Tentang DramaXFilm</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-blue-500 transition-colors text-sm">Cara Penggunaan</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Tonton</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-blue-500 transition-colors text-sm">Serial TV</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-blue-500 transition-colors text-sm">Film</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Bantuan</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-blue-500 transition-colors text-sm">Pusat Bantuan</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-blue-500 transition-colors text-sm">Hubungi</a></li>
+          </ul>
+        </div>
+        </div>
+      </div>
+      <div class="border-t border-slate-800/50 pt-6 text-center text-sm text-gray-500">
+        <p class="mb-10">&copy; 2025 DramaXFilm. Dibuat oleh RehanDev</p>
+      </div>
+    </footer>
+  </div>
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
